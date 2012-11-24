@@ -1,4 +1,4 @@
-### This is a plugin for the awesome jekyll static site generator ### 
+### This is a plugin for the awesome jekyll static site generator
 
 How to install
 --------------
@@ -20,3 +20,14 @@ Now you can move your categories in groups:
     my_category_group: "GroupA"
 
 where _group is the suffix you choose in the category_group_suffix variable.
+
+Bugs?
+-----
+
+You found a bug? Please tell me, via E-Mail or via github!
+
+
+I want more!
+------------
+
+Feel free to fork.
