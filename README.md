@@ -1,4 +1,4 @@
-### This is a plugin for the awesome jekyll static site generator
+### This is a plugin for the awesome [jekyll] static site generator
 
 How to install
 --------------
@@ -31,3 +31,5 @@ I want more!
 ------------
 
 Feel free to fork.
+
+[jekyll]: https://github.com/mojombo/jekyll
