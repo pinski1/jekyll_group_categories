@@ -36,7 +36,7 @@ module Jekyll
         cat = groups[ groupname ]
         html << "<li>#{groupname}</li>"
         html << "<ul>"
-        cat.each do |category|
+        cat.sort.each do |category|
           url = category_dir + category.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
           html << "<li><a href='#{url}'>#{category}</a></li>"
         end
@@ -45,7 +45,7 @@ module Jekyll
 
       html << "<li>#{group_unused_name}</li>"
       html << "<ul>"
-      not_grouped.each do |ng|
+      not_grouped.sort.each do |ng|
         url = category_dir + ng.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
         html << "<li><a href='#{url}'>#{ng}</a></li>"
       end
