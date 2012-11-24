@@ -44,12 +44,12 @@ module Jekyll
       end
 
       html << "<li>#{group_unused_name}</li>"
+      html << "<ul>"
       not_grouped.each do |ng|
-        html << "<ul>"
         url = category_dir + ng.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
         html << "<li><a href='#{url}'>#{ng}</a></li>"
-        html << "</ul>"
       end
+      html << "</ul>"
 
       html
     end
