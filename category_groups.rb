@@ -10,9 +10,9 @@ module Jekyll
     def render(context)
       html = ''
 
-      config = context.registers[:site].config
-      categories = context.registers[:site].categories
-      category_dir = config['root'] + config['category_dir'] + '/'
+      config        = context.registers[:site].config
+      categories    = context.registers[:site].categories
+      @category_dir  = config['root'] + config['category_dir'] + '/'
 
       group_suffix = config['category_group_suffix'] || "_group"
       group_unused_name = config['category_group_unused'] || "Ungrouped"
@@ -35,23 +35,21 @@ module Jekyll
       groups.keys.sort().each do |groupname|
         cat = groups[ groupname ]
         html << "<li>#{groupname}</li>"
-        html << "<ul>"
-        cat.sort.each do |category|
-          url = category_dir + category.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
-          html << "<li><a href='#{url}'>#{category}</a></li>"
-        end
-        html << "</ul>"
+        html << "<ul>#{lilink(cat.sort)}</ul>"
       end
 
       html << "<li>#{group_unused_name}</li>"
-      html << "<ul>"
-      not_grouped.sort.each do |ng|
-        url = category_dir + ng.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
-        html << "<li><a href='#{url}'>#{ng}</a></li>"
-      end
-      html << "</ul>"
+      html << "<ul>#{lilink(not_grouped.sort)}</ul>"
 
       html
+    end
+
+    def lilink(of) 
+      of.map { |e| "<li><a href='#{url(e)}'>#{e}</a></li>" }.join("")
+    end
+
+    def url(to)
+      @category_dir + to.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
     end
 
     def groupname(category, group_suffix)
